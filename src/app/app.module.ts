@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 //IMPORTAR RUTAS PERSONALIZADAS
 import { ROUTES } from "./app.routes";
+//Para hacer peticiones HTTP
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,6 +23,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES,{useHash:true})
   ],
   providers: [],
