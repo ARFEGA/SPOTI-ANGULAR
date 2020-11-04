@@ -5,7 +5,8 @@ import { RouterModule } from "@angular/router";
 import { ROUTES } from "./app.routes";
 //Para hacer peticiones HTTP
 import { HttpClientModule } from '@angular/common/http';
-
+//Servicio spotify
+import { SpotifyService } from "./services/spotify.service";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -26,7 +27,9 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES,{useHash:true})
   ],
-  providers: [],
+  providers: [
+    SpotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
