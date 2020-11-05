@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { SpotifyService } from "./../../services/spotify.service";
+import { SpotifyService } from './../../services/spotify.service';
 
 @Component({
   selector: 'app-home',
