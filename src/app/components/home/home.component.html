@@ -1,10 +1,12 @@
 <div class="card-columns">
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+    <div *ngFor="let newRelease of newReleases" class="card">
+        <img [src]="newRelease.images[0].url" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
+            <h5 class="card-title">{{newRelease.name}}</h5>
+            <span class="badge badge-dark">Artistas:</span>
+            <div  class="card-text">
+                <span *ngFor="let artist of newRelease.artists" class="badge badge-secondary">{{artist.name}}</span>
+            </div>
         </div>
     </div>
 </div>
