@@ -7,13 +7,16 @@ import { SpotifyService } from '../../services/spotify.service';
   ]
 })
 export class SearchComponent  {
-  artists:any[]=[];
-  constructor(private spotifyService:SpotifyService) { }
+  artists: any[] = [];
+  constructor(private spotifyService: SpotifyService) { }
 
-  searchArtists(artist:string){
-    this.spotifyService.getArtists(artist).subscribe((data:any) =>{
-      this.artists=data.artists.items
-    })
+
+  // tslint:disable-next-line: typedef
+  searchArtists(artist: string){
+    this.spotifyService.getArtists(artist).subscribe( (data: any) => {
+      this.artists = data;
+      }
+    );
   }
 
 }

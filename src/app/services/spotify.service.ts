@@ -7,21 +7,27 @@ import { map } from "rxjs/operators";
 })
 export class SpotifyService {
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient) {
     console.log("Servicio spoti corriendo......");
   }
-  getNewRelease(){
+ // tslint:disable-next-line: typedef
+  getQuery(query: string, filtro: string){
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQCryVay-vAq1NIUT4Odh2_WMv9I4mRv-4klxfCvtXAKgvxFNM3r59b0ju_R0mA3KU3LqzDNmYmQB_lWdZ4',
+      Authorization: 'Bearer BQDy60PqLP_cv7uS2LwEV46HfT9dvFL9m_e8DCe3FcDZUzRCXvlZTv9PFxnN2o41zeo-9VUuPpU39X0Apys',
     });
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases?limit=20',{ headers });
+    const auxQuery = `https://api.spotify.com/v1/${ query }`;
+    return this.http.get(auxQuery , { headers}).pipe( map ( data => data[`${filtro}`].items));
+  }
+ // tslint:disable-next-line: typedef
+  getNewRelease(){
+     return this.getQuery('browse/new-releases?limit=20', 'albums');
   }
 
-  getArtists(artist:string){
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer BQCryVay-vAq1NIUT4Odh2_WMv9I4mRv-4klxfCvtXAKgvxFNM3r59b0ju_R0mA3KU3LqzDNmYmQB_lWdZ4',
-    });
-    return this.http.get(`https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=15`,{ headers });
+  // tslint:disable-next-line: typedef
+  getArtists(artist: string){
+    const auxQuery = `search?q=${artist}&type=artist&limit=15`;
+    return this.getQuery(auxQuery, 'artists');
+
   }
 
 
