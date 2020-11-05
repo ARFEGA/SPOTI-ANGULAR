@@ -15,6 +15,7 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
 import { CustomCardsComponent } from './components/custom-cards/custom-cards.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,13 @@ import { CustomCardsComponent } from './components/custom-cards/custom-cards.com
     ArtistComponent,
     NavbarComponent,
     NoImagePipe,
-    CustomCardsComponent
+    CustomCardsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES,{useHash:true})
+    RouterModule.forRoot(ROUTES, { useHash: true})
   ],
   providers: [
     SpotifyService

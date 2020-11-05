@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { timeInterval } from 'rxjs/operators';
 import { SpotifyService } from './../../services/spotify.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { SpotifyService } from './../../services/spotify.service';
 })
 export class HomeComponent implements OnInit {
   newReleases: any[] = [];
+  loading = true;
   constructor(private spotifyService: SpotifyService, ) {
-     this.spotifyService.getNewRelease()
+    setTimeout(() => {
+       this.spotifyService.getNewRelease()
      .subscribe((data: any) => {
-      console.log(data);
-      this.newReleases = data;
-    });
+       this.newReleases = data;
+       this.loading = false;
+      });
+    }, 1000);
+
   }
 
   ngOnInit(): void {

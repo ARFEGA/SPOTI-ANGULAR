@@ -13,7 +13,7 @@ export class SpotifyService {
  // tslint:disable-next-line: typedef
   getQuery(query: string, filtro: string){
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQAH2TEiAFwbPQQrhe0CHy8stRqZSotIS1557kF1vRCuxYhgz7HpMAuQhD5Q2Ekk_1CN7yUMA3RT8GoLkwY',
+      Authorization: 'Bearer BQAa3ibdM3cdzj3Du6lmLr6w8KSPJiIQz5KNCi9Fj-KVFTJEhnIR6gVAS7hYA3DK5vf8WL5hTi34SZtgo5U',
     });
     const auxQuery = `https://api.spotify.com/v1/${ query }`;
     return this.http.get(auxQuery , { headers}).pipe( map ( data => data[`${filtro}`].items));
